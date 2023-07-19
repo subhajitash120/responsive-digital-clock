@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        h1{
+            font-size: 80px;
+            text-align: center;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: brown;
+        }
+        .main{
+            justify-content: center;
+            background-color: aqua;
+            margin: auto;
+            border: 1px solid black;
+            border-radius: 20%;
+        }
+        @media (max-width:400px) {
+            .main{
+                justify-content: center;
+            background-color: aqua;
+            margin: auto;
+            border: 1px solid black;
+            border-radius: 20%;
+            width: auto;
+            }
+            h1{
+                font-size: 50px;
+                text-align: center;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                color: brown;
+            }
+        }
+    </style>
+</head>
+<body onload="showtime()" style="background-color: cadetblue;">
+    <div class="main">
+    <h1></h1>
+    </div>
+</body>
+<script type="text/javascript">
+    function showtime(){
+        var d = new Date();
+        var h = d.getHours();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+        var session= "AM";
+        if(h>=12){
+            session="PM";
+        }
+        if(h>12){
+            h=h-12;
+        }
+        h=h<10?"0"+h:h;
+        m=m<10?"0"+m:m;
+        s=s<10?"0"+s:s;
+        var time=h+":"+m+":"+s + " "+session;
+        document.getElementsByTagName('h1')[0].innerText=time;
+        setTimeout(showtime,1000);
+    }
+</script>
+</html>
